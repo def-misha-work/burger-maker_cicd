@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* Burger Builder Custom Colors */
+  --burger-orange: hsl(16, 100%, 60%);
+  --burger-red: hsl(6, 78%, 57%);
+  --burger-yellow: hsl(48, 89%, 48%);
+  --burger-green: hsl(145, 63%, 42%);
+  --cheese-orange: hsl(35, 84%, 48%);
+  --soft-white: hsl(0, 0%, 99%);
+  --charcoal: hsl(210, 29%, 24%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: linear-gradient(135deg, hsl(48, 89%, 48%) 0%, hsl(16, 100%, 60%) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Burger Builder Colors */
+  .bg-burger-orange { background-color: var(--burger-orange); }
+  .bg-burger-red { background-color: var(--burger-red); }
+  .bg-burger-yellow { background-color: var(--burger-yellow); }
+  .bg-burger-green { background-color: var(--burger-green); }
+  .bg-cheese-orange { background-color: var(--cheese-orange); }
+  .bg-charcoal { background-color: var(--charcoal); }
+
+  .text-burger-orange { color: var(--burger-orange); }
+  .text-burger-red { color: var(--burger-red); }
+  .text-burger-yellow { color: var(--burger-yellow); }
+  .text-burger-green { color: var(--burger-green); }
+  .text-cheese-orange { color: var(--cheese-orange); }
+  .text-charcoal { color: var(--charcoal); }
+
+  .border-burger-orange { border-color: var(--burger-orange); }
+  .border-burger-red { border-color: var(--burger-red); }
+  .border-burger-yellow { border-color: var(--burger-yellow); }
+  .border-burger-green { border-color: var(--burger-green); }
+
+  /* Burger Building Animations */
+  .burger-layer {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .burger-layer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Ingredient Categories */
+  .ingredient-bun {
+    background: linear-gradient(135deg, hsl(48, 100%, 85%) 0%, hsl(48, 89%, 48%) 100%);
+  }
+
+  .ingredient-patty {
+    background: linear-gradient(135deg, hsl(6, 90%, 80%) 0%, hsl(6, 78%, 57%) 100%);
+  }
+
+  .ingredient-cheese {
+    background: linear-gradient(135deg, hsl(35, 95%, 75%) 0%, hsl(35, 84%, 48%) 100%);
+  }
+
+  .ingredient-vegetable {
+    background: linear-gradient(135deg, hsl(145, 80%, 70%) 0%, hsl(145, 63%, 42%) 100%);
+  }
+
+  .ingredient-sauce {
+    background: linear-gradient(135deg, hsl(6, 85%, 75%) 0%, hsl(6, 78%, 57%) 100%);
+  }
+
+  /* Drag and Drop States */
+  .ingredient-dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+  }
+
+  .drop-zone-active {
+    background: linear-gradient(135deg, hsl(48, 89%, 85%) 0%, hsl(16, 100%, 85%) 100%);
+    border: 2px dashed var(--burger-yellow);
+  }
+
+  .drop-zone-hover {
+    background: linear-gradient(135deg, hsl(48, 89%, 90%) 0%, hsl(16, 100%, 90%) 100%);
+    border: 2px solid var(--burger-orange);
+    transform: scale(1.02);
+  }
+
+  /* Custom Animations */
+  @keyframes bounceIn {
+    0% { 
+      transform: scale(0.3) translateY(30px); 
+      opacity: 0; 
+    }
+    50% { 
+      transform: scale(1.1) translateY(-10px); 
+      opacity: 0.8; 
+    }
+    100% { 
+      transform: scale(1) translateY(0); 
+      opacity: 1; 
+    }
+  }
+
+  @keyframes slideUp {
+    0% { 
+      transform: translateY(30px); 
+      opacity: 0; 
+    }
+    100% { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Easter Egg Animations */
+  .konami-mode {
+    background: linear-gradient(45deg, var(--burger-orange), var(--burger-red), var(--burger-yellow), var(--burger-green)) !important;
+    background-size: 400% 400% !important;
+    animation: gradient-shift 3s ease infinite !important;
+  }
+
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  /* Mobile Responsive Improvements */
+  @media (max-width: 768px) {
+    .burger-layer {
+      width: 80px;
+      height: 20px;
+    }
+    
+    .ingredient-item {
+      padding: 8px;
+    }
+    
+    .burger-construction {
+      min-height: 300px;
+    }
+  }
+
+  /* Focus States for Accessibility */
+  .ingredient-item:focus {
+    outline: 2px solid var(--burger-orange);
+    outline-offset: 2px;
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--burger-orange);
+    outline-offset: 2px;
+  }
+
+  /* Loading States */
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}

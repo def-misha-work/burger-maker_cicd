@@ -1,0 +1,13 @@
+[Unit]
+Description=Burger Maket site!
+
+[Service]
+User=ubuntu
+Restart=always
+WorkingDirectory=/ubuntu/burger-market/
+EnvironmentFile=/ubuntu/burger-market/.env
+ExecStart=/usr/bin/node dist/index.js
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
